@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 // command: flutter pub add http
 import 'package:http/http.dart' as http;
 
+import 'gif_page.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -52,6 +54,12 @@ class _HomePageState extends State<HomePage> {
                 height: 300.0,
                 fit: BoxFit.cover,
               ),
+              onTap: (){
+                Navigator.push(context,
+                MaterialPageRoute(
+                  builder: (context) => GifPage(snapshot.data["data"][index])
+                ));
+              },
             );
           } else {
             return Container(
@@ -70,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 ),
-                onTap: (){
+                onTap: () {
                   setState(() {
                     _offset += 19;
                   });
