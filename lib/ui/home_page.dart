@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 // command: flutter pub add http
 import 'package:http/http.dart' as http;
+// command: flutter pub add share
+import 'package:share/share.dart';
 
 import 'gif_page.dart';
 
@@ -59,6 +61,9 @@ class _HomePageState extends State<HomePage> {
                 MaterialPageRoute(
                   builder: (context) => GifPage(snapshot.data["data"][index])
                 ));
+              },
+              onLongPress: (){
+                Share.share(snapshot.data["data"][index]["images"]["fixed_height"]["url"]);
               },
             );
           } else {
